@@ -13,15 +13,19 @@ type User {
 
 type Decision {
     _id: ID
+    username: String!
     name: String!
-    pros: [{String}]
-    cons: [{String}]
+    pros: [String]
+    cons: [String]
     active: Boolean!
 }
 
 type Query {
-    user: User
+    me: User
+    users: [User]
+    user(username: String!)
     decision(_id: ID!): Decision
+    decisions(username: String!, active: Boolean!): [Decision]
 
 }
 
@@ -32,12 +36,12 @@ type Auth {
 
 
 type Mutation {
-    addUser
-    addDecision
-    updateUser
-    updateDecision
-    login
-    deleteDecision
+    addUser(username: String!, email: String!, password: String!, avatar: String!): Auth
+    addDecision(name: String!, pros: [String], cons: [String], active: Boolean!): Decision
+    updateUser(username: String!, email: String!, password: String!, avatar: String!): User
+    updateDecision(name: String!, pros: [String], cons: [String], active: Boolean!): Decision
+    login(email: String!, password: String!): Auth
+    deleteDecision(_id: ID!): Decision
 }
 
 `;
