@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Decision = require('./Decision');
+//const Decision = require('./Decision');
 
 const userSchema = new Schema({
   username: {
@@ -24,7 +24,12 @@ const userSchema = new Schema({
       type: String,
       require: true
   },
-  decisions: [Decision.schema]
+  decisions: [
+      {
+          type: Schema.Types.ObjectId,
+          ref: 'Decision'
+      }
+  ]
 });
 
 userSchema.pre('save', async function(next) {
