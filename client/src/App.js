@@ -9,6 +9,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Dashboard from './pages/Dashboard';
+import Create from './pages/Create';
 
 
 import Home from './pages/Home';
@@ -37,6 +39,8 @@ function App() {
              <Route exact path="/" component={Home} />
              <Route exact path="/login" component={Login} />
              <Route exact path="/signup" component={Signup} />
+             <Route exact path="/dashboard" component={Dashboard} />
+             <Route exact path="/create" component={Create} />
            </Switch>
          </div>
         <Footer/>
