@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-import { Button, Form, Container, Grid, Image, Divider } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Segment, Message } from 'semantic-ui-react';
 import placeholder from '../images/placeholder.jpg';
 
 const Signup = () => {
@@ -35,79 +35,57 @@ const Signup = () => {
   };
 
   return (
-    <main>
-      <Container>
-        <h2>Sign Up</h2>
-        <Form onSubmit={handleFormSubmit}>
-          <Grid divided="vertically">
-            <Grid.Row columns={2}>
-              <Grid.Column>
-                <Form.Field>
-                  <label>Username</label>
-                  <input
-                    className="form-input"
-                    placeholder='Your username'
-                    name='username'
-                    id='username'
-                    value={formState.username}
-                    onChange={handleChange}
-                  />
-                </Form.Field>
-              </Grid.Column>
-              <Grid.Column>
-                <Form.Field>
-                  <label>Email</label>
-                  <input
-                    className='form-input'
-                    placeholder='Your email'
-                    name='email'
-                    type='email'
-                    id='email'
-                    value={formState.email}
-                    onChange={handleChange}
-                  />
-                </Form.Field>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row columns={1}>
-              <Grid.Column>
-                <Form.Field>
-                  <label>Password</label>
-                  <input
-                    className='form-input'
-                    placeholder='******'
-                    name='password'
-                    type='password'
-                    id='password'
-                    value={formState.password}
-                    onChange={handleChange}
-                  />
-                </Form.Field>
-              </Grid.Column>
-            </Grid.Row >
-            <h3>Choose an Avatar</h3>
-            <Grid.Row columns={3}>
-              <Grid.Column>
-                <Image src={placeholder} size='tiny' />
-                <Divider hidden />
-              </Grid.Column>
-              <Grid.Column>
-                <Image src={placeholder} size='tiny' />
-                <Divider hidden />
-              </Grid.Column>
-              <Grid.Column>
-                <Image src={placeholder} size='tiny' />
-                <Divider hidden />
-              </Grid.Column>
-            </Grid.Row>
-            <Button type='submit'>
-              Submit
-              </Button>
-          </Grid>
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as='h2' style={{color: 'dodgerblue'}} textAlign='center'>
+          Sign Up!
+      </Header>
+        <Form size='large' onSubmit={handleFormSubmit}>
+          <Segment stacked>
+            <Form.Input
+              className="form-input"
+              placeholder='Your username'
+              name='username'
+              id='username'
+              fluid icon='user'
+              iconPosition='left'
+              value={formState.username}
+              onChange={handleChange}
+              />
+            <Form.Input
+              className='form-input'
+              name='email'
+              type='email'
+              id='email'
+              fluid icon='envelope'
+              iconPosition='left'
+              placeholder='E-mail address'
+              value={formState.email}
+              onChange={handleChange} />
+            <Form.Input
+              className='form-input'
+              name='password'
+              id='password'
+              fluid
+              icon='lock'
+              iconPosition='left'
+              placeholder='Password'
+              type='password'
+              value={formState.password}
+              onChange={handleChange}
+            />
+
+            <Button type="submit" style={{color: 'dodgerblue'}} fluid size='large'>
+              Sign Up
+          </Button>
+          </Segment>
         </Form>
-        {error && <div>Sign up failed</div>}
-      </Container>
-    </main>
+        {error && <div>Sign Up failed</div>}
+        <Message>
+          Already a Member? <a href='/login'>Login</a>
+        </Message>
+      </Grid.Column>
+    </Grid>
   );
 };
 

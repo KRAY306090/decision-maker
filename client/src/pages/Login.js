@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -38,39 +39,47 @@ const Login = (props) => {
   };
 
   return (
-    <main className='flex-row justify-center mb-4'>
-      <div className='col-12 col-md-6'>
-        <div className='card'>
-          <h4 className='card-header'>Login</h4>
-          <div className='card-body'>
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className='form-input'
-                placeholder='Your email'
-                name='email'
-                type='email'
-                id='email'
-                value={formState.email}
-                onChange={handleChange}
-              />
-              <input
-                className='form-input'
-                placeholder='******'
-                name='password'
-                type='password'
-                id='password'
-                value={formState.password}
-                onChange={handleChange}
-              />
-              <button className='btn d-block w-100' type='submit'>
-                Submit
-              </button>
-            </form>
-            {error && <div>Login failed</div>}
-          </div>
-        </div>
-      </div>
-    </main>
+    <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as='h2' style={{color: 'dodgerblue'}} textAlign='center'>
+          Log-in to your account
+      </Header>
+        <Form size='large' onSubmit={handleFormSubmit}>
+          <Segment stacked>
+            <Form.Input
+              className='form-input'
+              name='email'
+              type='email'
+              id='email'
+              fluid icon='user'
+              iconPosition='left'
+              placeholder='E-mail address'
+              value={formState.email}
+              onChange={handleChange} />
+            <Form.Input
+              className='form-input'
+              name='password'
+              id='password'
+              fluid
+              icon='lock'
+              iconPosition='left'
+              placeholder='Password'
+              type='password'
+              value={formState.password}
+              onChange={handleChange}
+            />
+
+            <Button type="submit" style={{color: 'dodgerblue'}} fluid size='large'>
+              Login
+          </Button>
+          </Segment>
+        </Form>
+        {error && <div>Login failed</div>}
+        <Message>
+          New to us? <a href='/signup'>Sign Up</a>
+        </Message>
+      </Grid.Column>
+    </Grid>
   );
 };
 
