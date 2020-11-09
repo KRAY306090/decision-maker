@@ -8,6 +8,8 @@ const Nav = () => {
     padding: '20px',
     fontFamily: 'Arial',
     height: '50px',
+    display: 'flex',
+    flexDirection: 'row'
   }
 
   const linkStyles = {
@@ -23,10 +25,29 @@ const Nav = () => {
     if (Auth.loggedIn()) {
       return (
         <ul style={{listStyleType: 'none'}}>
-            
+          <li>
+            <Link to="/dashboard">
+              Dashboard
+            </Link>
+          </li>
           <li>
             <Link to="/decisionHistory">
               Decision History
+            </Link>
+          </li>
+          <li>
+            <Link to="/create">
+              Create a Decision
+            </Link>
+          </li>
+          <li>
+            <Link to="/magic8ball">
+              Magic8ball
+            </Link>
+          </li>
+          <li>
+            <Link to="/fortune">
+              Fortune
             </Link>
           </li>
           <li>
@@ -59,7 +80,7 @@ const Nav = () => {
 
 
   return (
-        <nav style={navStyles}>
+    <nav style={navStyles}>
       {showNavigation()}
     </nav>
   );

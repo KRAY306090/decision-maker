@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -12,9 +10,11 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Create from './pages/Create';
-
-
 import Home from './pages/Home';
+import EightBall from './pages/EightBall'
+import Fortune from './pages/Fortune'
+
+// import { StoreProvider } from "./utils/GlobalState"
 
 const client = new ApolloClient({
   request: operation => {
@@ -34,17 +34,21 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
        <div>
-         <Header/>
-         <div>
-           <Switch>
-             <Route exact path="/" component={Home} />
-             <Route exact path="/login" component={Login} />
-             <Route exact path="/signup" component={Signup} />
-             <Route exact path="/dashboard" component={Dashboard} />
-             <Route exact path="/create" component={Create} />
-           </Switch>
-         </div>
-        <Footer/>
+         {/* <StoreProvider> */}
+          <Header/>
+            <div>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
+                <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/create" component={Create} />
+                <Route exact path="/magic8ball" component={EightBall} />
+                <Route exact path="/fortune" component={Fortune} />
+              </Switch>
+            </div>
+          <Footer/>
+        {/* </StoreProvider> */}
        </div>
       </Router>
     </ApolloProvider>

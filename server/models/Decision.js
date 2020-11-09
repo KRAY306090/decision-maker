@@ -12,6 +12,12 @@ const decisionSchema = new Schema ({
         type: String,
         required: true
     },
+    decisionText: {
+        type: String,
+        required: 'Describe your conundrum!',
+        minlength: 1,
+        maxlength: 280
+    },
     createdAt: {
         type: Date,
         default: Date.now,
