@@ -42,7 +42,7 @@ const Login = (props) => {
     <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as='h2' style={{color: 'dodgerblue'}} textAlign='center'>
-          Log-in to your account
+          Login to your account
       </Header>
         <Form size='large' onSubmit={handleFormSubmit}>
           <Segment stacked>

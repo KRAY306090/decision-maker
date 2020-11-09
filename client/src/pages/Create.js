@@ -1,10 +1,19 @@
 import React from 'react';
+import { Form } from 'semantic-ui-react';
 
 const Create = () => {
     return (
-        <main>
-            <div>Make new decisions here!</div>
-        </main>
+        <Form>
+            <Form.Input
+                className="form-input"
+                placeholder='Decision Title'
+                name='title'
+                id='title'
+            />
+
+            
+
+        </Form>
     );
 }
 
