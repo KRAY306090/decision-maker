@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { Button, Form, Container, Grid, Image, Divider } from 'semantic-ui-react';
+import placeholder from '../images/placeholder.jpg';
 
 const Signup = () => {
   const [formState, setFormState] = useState({ username: '', email: '', password: '', avatar: '' });
@@ -26,62 +28,85 @@ const Signup = () => {
         variables: { ...formState }
       });
       console.log("Success!!!!!!");
-     Auth.login(data.addUser.token);
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.log(e)
     }
   };
 
   return (
-    <main className='flex-row justify-center mb-4'>
-      <div className='col-12 col-md-6'>
-        <div className='card'>
-          <h4 className='card-header'>Sign Up</h4>
-          <div className='card-body'>
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className='form-input'
-                placeholder='Your username'
-                name='username'
-                type='username'
-                id='username'
-                value={formState.username}
-                onChange={handleChange}
-              />
-              <input
-                className='form-input'
-                placeholder='Your email'
-                name='email'
-                type='email'
-                id='email'
-                value={formState.email}
-                onChange={handleChange}
-              />
-              <input
-                className='form-input'
-                placeholder='******'
-                name='password'
-                type='password'
-                id='password'
-                value={formState.password}
-                onChange={handleChange}
-              />
-              <input
-                className='form-input'
-                name='avatar'
-                type='avatar'
-                id='avatar'
-                value={formState.avatar}
-                onChange={handleChange}
-              />
-              <button className='btn d-block w-100' type='submit'>
-                Submit
-              </button>
-            </form>
-            {error && <div>Sign up failed</div>}
-          </div>
-        </div>
-      </div>
+    <main>
+      <Container>
+        <h2>Sign Up</h2>
+        <Form onSubmit={handleFormSubmit}>
+          <Grid divided="vertically">
+            <Grid.Row columns={2}>
+              <Grid.Column>
+                <Form.Field>
+                  <label>Username</label>
+                  <input
+                    className="form-input"
+                    placeholder='Your username'
+                    name='username'
+                    id='username'
+                    value={formState.username}
+                    onChange={handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column>
+                <Form.Field>
+                  <label>Email</label>
+                  <input
+                    className='form-input'
+                    placeholder='Your email'
+                    name='email'
+                    type='email'
+                    id='email'
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row columns={1}>
+              <Grid.Column>
+                <Form.Field>
+                  <label>Password</label>
+                  <input
+                    className='form-input'
+                    placeholder='******'
+                    name='password'
+                    type='password'
+                    id='password'
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row >
+            <h3>Choose an Avatar</h3>
+            <Grid.Row columns={3}>
+              <Grid.Column>
+                <Image src={placeholder} size='tiny' />
+                <Divider hidden />
+              </Grid.Column>
+              <Grid.Column>
+                <Image src={placeholder} size='tiny' />
+                <Divider hidden />
+              </Grid.Column>
+              <Grid.Column>
+                <Image src={placeholder} size='tiny' />
+                <Divider hidden />
+              </Grid.Column>
+            </Grid.Row>
+            <Button type='submit'>
+              Submit
+              </Button>
+          </Grid>
+        </Form>
+        {error && <div>Sign up failed</div>}
+      </Container>
     </main>
   );
 };
