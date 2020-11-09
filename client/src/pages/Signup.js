@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { Button, Form, Grid, Header, Segment, Message } from 'semantic-ui-react';
+import placeholder from '../images/placeholder.jpg';
 
 const Signup = () => {
   const [formState, setFormState] = useState({ username: '', email: '', password: '', avatar: '' });
@@ -26,63 +28,64 @@ const Signup = () => {
         variables: { ...formState }
       });
       console.log("Success!!!!!!");
-     Auth.login(data.addUser.token);
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.log(e)
     }
   };
 
   return (
-    <main className='flex-row justify-center mb-4'>
-      <div className='col-12 col-md-6'>
-        <div className='card'>
-          <h4 className='card-header'>Sign Up</h4>
-          <div className='card-body'>
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className='form-input'
-                placeholder='Your username'
-                name='username'
-                type='username'
-                id='username'
-                value={formState.username}
-                onChange={handleChange}
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as='h2' style={{color: 'dodgerblue'}} textAlign='center'>
+          Sign Up!
+      </Header>
+        <Form size='large' onSubmit={handleFormSubmit}>
+          <Segment stacked>
+            <Form.Input
+              className="form-input"
+              placeholder='Your username'
+              name='username'
+              id='username'
+              fluid icon='user'
+              iconPosition='left'
+              value={formState.username}
+              onChange={handleChange}
               />
-              <input
-                className='form-input'
-                placeholder='Your email'
-                name='email'
-                type='email'
-                id='email'
-                value={formState.email}
-                onChange={handleChange}
-              />
-              <input
-                className='form-input'
-                placeholder='******'
-                name='password'
-                type='password'
-                id='password'
-                value={formState.password}
-                onChange={handleChange}
-              />
-              <input
-                className='form-input'
-                name='avatar'
-                type='avatar'
-                id='avatar'
-                value={formState.avatar}
-                onChange={handleChange}
-              />
-              <button className='btn d-block w-100' type='submit'>
-                Submit
-              </button>
-            </form>
-            {error && <div>Sign up failed</div>}
-          </div>
-        </div>
-      </div>
-    </main>
+            <Form.Input
+              className='form-input'
+              name='email'
+              type='email'
+              id='email'
+              fluid icon='envelope'
+              iconPosition='left'
+              placeholder='E-mail address'
+              value={formState.email}
+              onChange={handleChange} />
+            <Form.Input
+              className='form-input'
+              name='password'
+              id='password'
+              fluid
+              icon='lock'
+              iconPosition='left'
+              placeholder='Password'
+              type='password'
+              value={formState.password}
+              onChange={handleChange}
+            />
+
+            <Button type="submit" style={{color: 'dodgerblue'}} fluid size='large'>
+              Sign Up
+          </Button>
+          </Segment>
+        </Form>
+        {error && <div>Sign Up failed</div>}
+        <Message>
+          Already a Member? <a href='/login'>Login</a>
+        </Message>
+      </Grid.Column>
+    </Grid>
   );
 };
 

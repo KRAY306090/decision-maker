@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_DECISION} from '../utils/mutations';
+import { Form } from 'semantic-ui-react';
 
 // importing so we can update cached thoughts array
 import { QUERY_DECISIONS, QUERY_ME } from '../utils/queries';

@@ -45,3 +45,4 @@ export const DELETE_DECISION = gql`
       }
     }
 `
+
