@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_DECISION} from '../utils/mutations';
+import { ADD_DECISION} from '../../utils/mutations';
 
 // importing so we can update cached thoughts array
-import { QUERY_DECISIONS, QUERY_ME } from '../utils/queries';
+import { QUERY_DECISIONS, QUERY_ME } from '../../utils/queries';
 
-const Create = () => {
+const DecisionForm = () => {
     const [decisionText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const [addDecision, {error}] = useMutation(ADD_DECISION, {
@@ -78,5 +78,4 @@ const Create = () => {
   );
 };
 
-
-export default Create;
+export default DecisionForm;
