@@ -36,7 +36,7 @@ const EightBall = () => {
     }
 
     return (
-        <Container style={{ marginTop: '12em' }}>
+        <Container style={{ paddingTop: '30vh', paddingBottom: '50vh'} }>
             <Grid>
                 <Grid.Column width={5}>
                 <Image

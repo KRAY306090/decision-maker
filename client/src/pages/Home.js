@@ -27,8 +27,8 @@ const Home = () => {
 
     return (
        
-        <Container style={{ marginTop: '12em' }}>
-            <Grid>
+        <Container style={{ paddingTop: '30vh', paddingBottom: '50vh'} }>
+            <Grid className="Box">
             <Grid.Column width={5}>
                 <Image
                     size="massive"
@@ -38,6 +38,7 @@ const Home = () => {
                     onClick={flipCoin}
                 />
                 </Grid.Column>
+                
                 <Grid.Column width={10}>
                 <h1>Click the coin to decide your course!</h1>
                 <p>You have flipped the coin {flipped} times.</p>
@@ -47,6 +48,7 @@ const Home = () => {
                     <li>Tails: {tails}</li>
                 </ul>
                 </Grid.Column>
+                
             </Grid>
             </Container>
            

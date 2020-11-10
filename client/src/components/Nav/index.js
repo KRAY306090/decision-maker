@@ -7,7 +7,7 @@ import { Container, Image, Dropdown } from 'semantic-ui-react';
 const Nav = () => {
   if (Auth.loggedIn()) {
     return (
-      <Menu fixed='top' inverted>
+      <Menu fixed='top' size="massive" inverted>
         <Container>
           <Menu.Item as='a' href="/" header>
             Decidr
@@ -28,7 +28,7 @@ const Nav = () => {
   } else {
     return (
 
-      <Menu fixed='top' inverted>
+      <Menu fixed='top' size="massive" inverted>
         <Container>
           <Menu.Item as='a' href="/" header>
             Decidr
