@@ -5,8 +5,13 @@ const Footer = () => {
   const footerStyles = {
     backgroundColor: 'DodgerBlue',
     padding: '20px',
-    fontFamily: 'Arial'
-    
+    fontFamily: 'Arial',
+    height: '50px',
+    marginTop: '-50px',
+    position: 'fixed',
+    bottom: '0',
+    left: '0',
+    width: '100%'
   }
 
   return (
