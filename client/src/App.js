@@ -35,7 +35,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-       <div class="html">
+       <div className="chess" >
          {/* <StoreProvider> */}
           <Nav/>
             <main>
@@ -50,6 +50,7 @@ function App() {
               </Switch>
             </main>
         {/* </StoreProvider> */}
+        <Footer/>
        </div>
       </Router>
     </ApolloProvider>

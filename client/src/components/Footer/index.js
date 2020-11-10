@@ -1,18 +1,14 @@
 import React from 'react';
+import { Segment, Container } from 'semantic-ui-react';
 
 
 const Footer = () => {
-  const footerStyles = {
-    backgroundColor: 'DodgerBlue',
-    padding: '20px',
-    fontFamily: 'Arial'
-    
-  }
-
   return (
-    <footer style={footerStyles}>
-      <div >&copy;2020 by Team Avatar</div>
-    </footer>
+    <Segment size="huge" style={{backgroundColor: '#c68c27'}}>
+      <Container>
+        <div >&copy;2020 by Team Avatar</div>
+      </Container>
+    </Segment>
   );
 };
 

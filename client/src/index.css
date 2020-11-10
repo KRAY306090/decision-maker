@@ -14,13 +14,27 @@ code {
 }
 
 .Box {
-  background-color: white;
-  opacity: 50%;
+  background-color: #2c2c2c;
+  color: white;
+  opacity: 90%;
+  border: white 5px groove;
+}
 
+.boxContent {
+  padding: 30px;
+  justify-content: center;
 }
 
 .html { 
   background: url(assets/background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.chess {
+  background: url(assets/chess.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
