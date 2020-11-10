@@ -5,10 +5,14 @@ import { Form } from 'semantic-ui-react';
 
 // importing so we can update cached thoughts array
 import { QUERY_DECISIONS, QUERY_ME } from '../utils/queries';
+import { from } from 'apollo-boost';
 
 const Create = () => {
-    const [decisionText, setText] = useState('');
+    const [decisionText, setDecisionText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
+    const [name, setName] = useState('') 
+    const [pros, setPros] = useState([])
+    const [cons, setCons] = useState([])
     const [addDecision, {error}] = useMutation(ADD_DECISION, {
         update(cache, { data: { addDecision } }) {
             try {
@@ -31,11 +35,20 @@ const Create = () => {
         }
     })
 
-    const handleChange = event => {
+    const prosArray = []
+    const consArray = []
+
+    const handleDecisionChange = event => {
         if (event.target.value.length <= 280) {
-            setText(event.target.value)
+            setDecisionText(event.target.value)
             setCharacterCount(event.target.value.length)
         }
+    }
+
+    const handleProsSubmit = event => {
+      event.preventDefault()
+
+
     }
 
     const handleFormSubmit = async event => {
@@ -44,11 +57,14 @@ const Create = () => {
         try {
             // add thought to database
             await addDecision({
-                variables: {decisionText}
+                variables: {name, decisionText, pros, cons}
             })
 
             // clear form value
-            setText('')
+            setName('')
+            setDecisionText('')
+            setPros([])
+            setCons([])
             setCharacterCount(0)
         } catch (e) {
             console.error(e)
@@ -58,26 +74,52 @@ const Create = () => {
     
   return (
     <div>
-      <p className={`m-0 ${characterCount === 280 ? 'text-error' : ''}`}>
-        Character Count: {characterCount}/280
-        {error && <span >Something went wrong...</span>}
-      </p>
-      <form 
+      
+      <Form 
         onSubmit={handleFormSubmit}
       >
-        <textarea
+        <Form.TextArea
+          label='Decision'
           placeholder="Here's a new conundrum..."
           value={decisionText}
           className=""
-          onChange={handleChange}
-        ></textarea>
-        <button className="" type="submit">
-          Submit
-        </button>
-      </form>
+          onChange={handleDecisionChange}
+        />
+        <p className={`m-0 ${characterCount === 280 ? 'text-error' : ''}`}>
+        Character Count: {characterCount}/280
+        {error && <span >Something went wrong...</span>}
+        </p>
+        <Form.Group inline>
+          <label>Pros: </label>
+          <Form.Input id='prosInput' value='' placeholder='Enter a Pro here!'/>
+          <Form.Button> + </Form.Button>
+        </Form.Group>
+        <Form.Group inline>
+          <label>Cons: </label>
+          <Form.Input id='consInput' placeholder='Enter a Con here!'/>
+          <Form.Button> + </Form.Button>
+        </Form.Group>
+        <Form.Button>Submit</Form.Button>
+      </Form>
     </div>
   );
 };
 
 
 export default Create;
+
+
+{/* <textarea
+          id="decision"
+          placeholder="Here's a new conundrum..."
+          value={decisionText}
+          className=""
+          onChange={handleDecisionChange}
+        ></textarea>
+        <input>
+        </input>
+        <input>
+        </input>
+        <button className="" type="submit">
+          Submit
+        </button> */}
