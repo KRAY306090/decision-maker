@@ -2,6 +2,13 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
 
+input UserInput {
+    username: String
+    email: String
+    password: String
+    avatar: String
+}
+
 type User {
     _id: ID
     username: String
@@ -11,10 +18,20 @@ type User {
     decisions: [Decision]
 }
 
+input DecisionInput {
+    username: String!
+    name: String!
+    decisionText: String!
+    pros: [String]
+    cons: [String]
+    active: Boolean!
+}
+
 type Decision {
     _id: ID
     username: String!
     name: String!
+    decisionText: String!
     pros: [String]
     cons: [String]
     active: Boolean!
@@ -37,9 +54,9 @@ type Auth {
 
 type Mutation {
     addUser(username: String, email: String, password: String, avatar: String): Auth
-    addDecision(name: String!, pros: [String], cons: [String], active: Boolean!): Decision
-    updateUser(username: String!, email: String!, password: String!, avatar: String!): User
-    updateDecision(name: String!, pros: [String], cons: [String], active: Boolean!): Decision
+    addDecision(name: String!, decisionText: String!, pros: [String], cons: [String], active: Boolean!): Decision
+    updateUser(_id: ID!, input: UserInput): User
+    updateDecision(_id: ID!, input: DecisionInput): Decision
     login(email: String!, password: String!): Auth
     deleteDecision(_id: ID!): Decision
 }

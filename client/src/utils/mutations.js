@@ -28,12 +28,13 @@ export const ADD_DECISION = gql`
     mutation addDecision($name: String!, $decisionText: String!, $pros: [String], $cons: [String], $active: Boolean!){
       addDecision(name: $name, decisionText: $decisionText, pros: $pros, cons: $cons, active: $active) {
         _id
+        username
         name
         decisionText
+        createdAt
         pros
         cons
         active
-        createdAt
       }
     }
 `
@@ -42,6 +43,18 @@ export const DELETE_DECISION = gql`
     mutation deleteDecision($_id: ID!) {
       deleteDecision(_id: $_id) {
         _id
+      }
+    }
+`
+
+export const updateUser = gql `
+    mutation updateUser($username: String!, $email: String!, $password: String!, $avatar: String!) {
+      updateUser(username: $username, email: $email, password: $password, avatar: $avatar) {
+        _id
+        username
+        email
+        password
+        avatar
       }
     }
 `
