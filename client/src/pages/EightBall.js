@@ -1,5 +1,6 @@
 import React from 'react';
-import eightball from '../assets/magic8ball.jpg'
+import eightball from '../assets/magic8ball.jpg';
+import { Container, Image, Grid } from 'semantic-ui-react';
 const { useState } = React
 
 const EightBall = () => {
@@ -26,7 +27,7 @@ const EightBall = () => {
         "Yes",
         "Yes – definitely",
         "You may rely on it"
-   ]
+    ]
 
     const magic = () => {
         const guidance = Math.round(Math.random() * answers.length)
@@ -35,18 +36,22 @@ const EightBall = () => {
     }
 
     return (
-        <main>
-            <div>
-                <h1>Ask the EightBall for guidance!</h1>
-                <img
+        <Container style={{ marginTop: '12em' }}>
+            <Grid>
+                <Grid.Column width={5}>
+                <Image
                     id="eightball"
                     src={eightball}
-                    onClick= {magic}
+                    onClick={magic}
                 />
+                </Grid.Column>
+                <Grid.Column width={10}>
+                <h1>Ask the EightBall for guidance!</h1>
                 <p>Ask your question and click the Magic8ball!</p>
                 <p>Your guidance: {answer}.</p>
-            </div>
-        </main>
+                </Grid.Column>
+            </Grid>
+        </Container>
     )
 }
 
