@@ -35,7 +35,7 @@ function App() {
       <Router>
        <div>
          {/* <StoreProvider> */}
-          <Header/>
+          <Nav/>
             <div>
               <Switch>
                 <Route exact path="/" component={Home} />
@@ -47,7 +47,6 @@ function App() {
                 <Route exact path="/fortune" component={Fortune} />
               </Switch>
             </div>
-          <Footer/>
         {/* </StoreProvider> */}
        </div>
       </Router>

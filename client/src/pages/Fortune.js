@@ -1,5 +1,6 @@
 import React from 'react';
-import fortuneImage from '../assets/carnival-fortune-teller.jpg'
+import fortuneImage from '../assets/carnival-fortune-teller.jpg';
+import { Container, Image, Grid } from 'semantic-ui-react';
 const { useState } = React
 
 const Fortune = () => {
@@ -63,7 +64,7 @@ const Fortune = () => {
         "It is honorable to stand up for what is right, however unpopular it seems",
         "It is worth reviewing some old lessons",
         "It takes courage to admit fault"
-   ]
+    ]
 
     const yourFortune = () => {
         const guidance = Math.round(Math.random() * fortunes.length)
@@ -72,18 +73,22 @@ const Fortune = () => {
     }
 
     return (
-        <main>
-            <div>
-                <h1>Ask the EightBall for guidance!</h1>
-                <img
+        <Container style={{ marginTop: '12em' }}>
+            <Grid>
+                <Grid.Column width={5}>
+                <Image
                     id="eightball"
                     src={fortuneImage}
-                    onClick= {yourFortune}
+                    onClick={yourFortune}
                 />
+                </Grid.Column>
+                <Grid.Column width={10}>
+                <h1>Ask the EightBall for guidance!</h1>
                 <p>Ask your question and click the Magic8ball!</p>
                 <p>Your Fortune: {fortune}.</p>
-            </div>
-        </main>
+                </Grid.Column>
+            </Grid>
+        </Container>
     )
 }
 

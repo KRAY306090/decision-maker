@@ -1,89 +1,46 @@
 import React from 'react';
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import { Menu } from 'semantic-ui-react';
+import { Container, Image, Dropdown } from 'semantic-ui-react';
 
 const Nav = () => {
-  const navStyles = {
-    backgroundColor: 'DodgerBlue',
-    padding: '20px',
-    fontFamily: 'Arial',
-    height: '50px',
-    display: 'flex',
-    flexDirection: 'row'
+  if (Auth.loggedIn()) {
+    return (
+      <Menu fixed='top' inverted>
+        <Container>
+          <Menu.Item as='a' href="/" header>
+            Decidr
+        </Menu.Item>
+          <Menu.Item as='a' href="/" >Home</Menu.Item>
+          <Menu.Item as='a' href="/dashboard">My Decisions</Menu.Item>
+          <Menu.Item as='a' href="/" onClick={() => Auth.logout()}>Logout</Menu.Item>
+
+          <Dropdown item simple text='Tools'>
+            <Dropdown.Menu>
+              <Dropdown.Item href="/magic8ball">Eight Ball</Dropdown.Item>
+              <Dropdown.Item href="/fortune">Fortune Teller</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Container>
+      </Menu>
+    );
+  } else {
+    return (
+
+      <Menu fixed='top' inverted>
+        <Container>
+          <Menu.Item as='a' href="/" header>
+            Decidr
+        </Menu.Item>
+          <Menu.Item as='a' href="/login" >Login</Menu.Item>
+          <Menu.Item as='a' href="/signup">Signup</Menu.Item>
+        </Container>
+      </Menu>
+
+
+    );
   }
-
-  const linkStyles = {
-    listStyleType: 'none',
-    position: 'relative',
-    left: '30px',
-    display: 'flex',
-    flexPosition: '1',
-    justifyContent: 'center',
-  }
-  
-  function showNavigation() {
-    if (Auth.loggedIn()) {
-      return (
-        <ul style={{listStyleType: 'none'}}>
-          <li>
-            <Link to="/dashboard">
-              Dashboard
-            </Link>
-          </li>
-          <li>
-            <Link to="/decisionHistory">
-              Decision History
-            </Link>
-          </li>
-          <li>
-            <Link to="/create">
-              Create a Decision
-            </Link>
-          </li>
-          <li>
-            <Link to="/magic8ball">
-              Magic8ball
-            </Link>
-          </li>
-          <li>
-            <Link to="/fortune">
-              Fortune
-            </Link>
-          </li>
-          <li>
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
-            </a>
-          </li>
-        </ul>
-      );
-    } else {
-      return (
-        <ul style={linkStyles}>
-          <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
-          </li>
-        </ul>
-      );
-    }
-  }
-
-
-
-
-  return (
-    <nav style={navStyles}>
-      {showNavigation()}
-    </nav>
-  );
-};
+}
 
 export default Nav;
