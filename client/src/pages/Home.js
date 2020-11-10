@@ -28,7 +28,7 @@ const Home = () => {
     return (
        
         <Container style={{ paddingTop: '30vh', paddingBottom: '29vh'} }>
-            <Grid columns={2} className="Box" divided>
+            <Grid columns={2} className="Box" divided stackable>
                 <Grid.Row>
             <Grid.Column  width={5}>
                 <Image
