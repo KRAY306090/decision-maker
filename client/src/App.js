@@ -2,6 +2,7 @@ import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Background from './assets/background.jpg';
 
 import Header from './components/Header';
 import Nav from './components/Nav';
@@ -15,6 +16,7 @@ import EightBall from './pages/EightBall'
 import Fortune from './pages/Fortune'
 
 // import { StoreProvider } from "./utils/GlobalState"
+
 
 const client = new ApolloClient({
   request: operation => {
@@ -33,10 +35,10 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-       <div>
+       <div className="chess" >
          {/* <StoreProvider> */}
           <Nav/>
-            <div>
+            <main>
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
@@ -46,8 +48,9 @@ function App() {
                 <Route exact path="/magic8ball" component={EightBall} />
                 <Route exact path="/fortune" component={Fortune} />
               </Switch>
-            </div>
+            </main>
         {/* </StoreProvider> */}
+        <Footer/>
        </div>
       </Router>
     </ApolloProvider>

@@ -1,6 +1,6 @@
 import React from 'react';
-import headsCoin from '../assets/heads.jpg'
-import tailsCoin from '../assets/tails.jpg'
+import headsCoin from '../assets/heads.png'
+import tailsCoin from '../assets/tails.png'
 import { Container, Grid, Image, Divider } from 'semantic-ui-react';
 const { useState } = React
 
@@ -27,10 +27,12 @@ const Home = () => {
 
     return (
        
-        <Container style={{ marginTop: '12em' }}>
-            <Grid>
-            <Grid.Column width={5}>
+        <Container style={{ paddingTop: '30vh', paddingBottom: '29vh'} }>
+            <Grid columns={2} className="Box" divided stackable>
+                <Grid.Row>
+            <Grid.Column  width={5}>
                 <Image
+                    className="boxContent"
                     size="massive"
                     id="coin"
                     type="image"
@@ -38,7 +40,9 @@ const Home = () => {
                     onClick={flipCoin}
                 />
                 </Grid.Column>
-                <Grid.Column width={10}>
+                
+                <Grid.Column width={10} >
+                <div className="boxContent">    
                 <h1>Click the coin to decide your course!</h1>
                 <p>You have flipped the coin {flipped} times.</p>
                 <p>The result is {side === 1 ? "heads" : "tails"}.</p>
@@ -46,7 +50,9 @@ const Home = () => {
                     <li>Heads: {heads}</li>
                     <li>Tails: {tails}</li>
                 </ul>
+                </div>
                 </Grid.Column>
+                </Grid.Row>
             </Grid>
             </Container>
            

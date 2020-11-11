@@ -35,12 +35,12 @@ const Signup = () => {
   };
 
   return (
-      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      <Grid className="html" textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2' style={{color: 'dodgerblue'}} textAlign='center'>
+        <Header as='h2' textAlign='center'>
           Sign Up!
       </Header>
-        <Form size='large' onSubmit={handleFormSubmit}>
+        <Form size='large' onSubmit={handleFormSubmit} className="credentials">
           <Segment stacked>
             <Form.Input
               className="form-input"
@@ -75,7 +75,7 @@ const Signup = () => {
               onChange={handleChange}
             />
 
-            <Button type="submit" style={{color: 'dodgerblue'}} fluid size='large'>
+            <Button type="submit" fluid size='large'>
               Sign Up
           </Button>
           </Segment>
