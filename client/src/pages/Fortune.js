@@ -86,7 +86,7 @@ const Fortune = () => {
                 <Grid.Column width={10}>
                     <div className="boxContent">
                         <h1>Ask the Fortune Teller for guidance!</h1>
-                        <p>Ask your question and click the Magic8ball!</p>
+                        <p>Ask your question and click the Fortune Teller!</p>
                         <p>Your Fortune: {fortune}.</p>
                     </div>
                 </Grid.Column>
