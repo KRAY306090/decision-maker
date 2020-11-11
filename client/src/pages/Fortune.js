@@ -73,19 +73,22 @@ const Fortune = () => {
     }
 
     return (
-        <Container style={{ paddingTop: '30vh', paddingBottom: '50vh'} }>
-            <Grid>
+        <Container style={{ paddingTop: '30vh', paddingBottom: '29vh' }}>
+            <Grid columns={2} className="Box" divided stackable>
                 <Grid.Column width={5}>
-                <Image
-                    id="eightball"
-                    src={fortuneImage}
-                    onClick={yourFortune}
-                />
+                    <Image
+                        className="boxContent"
+                        id="eightball"
+                        src={fortuneImage}
+                        onClick={yourFortune}
+                    />
                 </Grid.Column>
                 <Grid.Column width={10}>
-                <h1>Ask the EightBall for guidance!</h1>
-                <p>Ask your question and click the Magic8ball!</p>
-                <p>Your Fortune: {fortune}.</p>
+                    <div className="boxContent">
+                        <h1>Ask the Fortune Teller for guidance!</h1>
+                        <p>Ask your question and click the Magic8ball!</p>
+                        <p>Your Fortune: {fortune}.</p>
+                    </div>
                 </Grid.Column>
             </Grid>
         </Container>
