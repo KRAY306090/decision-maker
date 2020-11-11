@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { Redirect, useParams } from 'react-router-dom';
 import DecisionList from '../components/DecisionList';
@@ -106,7 +105,7 @@ const Dashboard = () => {
     return (
         <Container className="chess" style={{ paddingTop: '30vh', paddingBottom: '29vh' }}>
             <Button href="/create">Start a new decision here!</Button>
-            <Card.Group centered stackable items={items}>
+            <Card.Group style={{paddingTop: '30px'}} centered stackable items={items}>
 
             </Card.Group>
         </Container>
