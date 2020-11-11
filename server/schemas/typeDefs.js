@@ -42,7 +42,7 @@ type Query {
     users: [User]
     user(username: String!): User
     decision(_id: ID!): Decision
-    decisions(username: String!, active: Boolean!): [Decision]
+    decisions(username: String!): [Decision]
 
 }
 

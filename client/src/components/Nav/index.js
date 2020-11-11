@@ -20,6 +20,7 @@ const Nav = () => {
             <Dropdown.Menu>
               <Dropdown.Item href="/magic8ball">Eight Ball</Dropdown.Item>
               <Dropdown.Item href="/fortune">Fortune Teller</Dropdown.Item>
+              <Dropdown.Item href="/create">Create a Decision</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Container>
