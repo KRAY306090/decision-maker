@@ -9,6 +9,7 @@ export const QUERY_USER = gql`
     avatar
     decisions {
       _id
+      name
       decisionText
       createdAt
       pros
@@ -28,11 +29,9 @@ export const QUERY_ME = gql`
       avatar
       decisions {
         _id
+        name
         decisionText
         createdAt
-        pros
-        cons
-        active
       }
     }
   }
