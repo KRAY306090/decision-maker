@@ -25,29 +25,53 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_DECISION = gql`
-    mutation addDecision($name: String!, $decisionText: String!, $pros: [String], $cons: [String], $active: Boolean!){
-      addDecision(name: $name, decisionText: $decisionText, pros: $pros, cons: $cons, active: $active) {
+    mutation addDecision($name: String!, $decisionText: String!){
+      addDecision(name: $name, decisionText: $decisionText) {
         _id
         username
         name
         decisionText
         createdAt
-        pros
-        cons
+        pros {
+          proId
+          pro
+        }
+        cons {
+          conId
+          con
+        }
         active
       }
     }
 `
 
-export const DELETE_DECISION = gql`
-    mutation deleteDecision($_id: ID!) {
-      deleteDecision(_id: $_id) {
-        _id
+export const ADD_PRO = gql`
+    mutation addPro($proId: ID, $pro: String){
+      addPro(proId: $proId, pro: $pro) {
+        proId
+        pro
       }
     }
 `
 
-export const updateUser = gql `
+export const ADD_CON = gql`
+  mutation addCon($conData: ConInput){
+    addCon(conData: $conData) {
+      proId
+      pro
+    }
+  }
+`
+
+// export const DELETE_DECISION = gql`
+//     mutation deleteDecision($_id: ID!) {
+//       deleteDecision(_id: $_id) {
+//         _id
+//       }
+//     }
+// `
+
+export const UPDATE_USER = gql `
     mutation updateUser($username: String!, $email: String!, $password: String!, $avatar: String!) {
       updateUser(username: $username, email: $email, password: $password, avatar: $avatar) {
         _id
@@ -59,3 +83,23 @@ export const updateUser = gql `
     }
 `
 
+export const DELETE_DECISION = gql`
+    mutation deleteDecision($_id: ID!){
+      deleteDecision(_id: $_id) {
+        _id
+        username
+        name
+        decisionText
+        createdAt
+        pros {
+          proId
+          pro
+        }
+        cons {
+          conId
+          con
+        }
+        active
+      }
+    }
+`

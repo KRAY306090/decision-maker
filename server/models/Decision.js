@@ -23,19 +23,19 @@ const decisionSchema = new Schema ({
         default: Date.now,
         get: timestamp => moment(timestamp).format('MMM Do, YYYY [at] hh:mm a')
     },
-    pros: [
-        {
-            type: String
-        }
-    ],
-    cons: [
-        {
-            type: String
-        }
-    ],
-    active: {
-        type: Boolean
-    }
+    // pros: [
+    //     {
+    //         type: String
+    //     }
+    // ],
+    // cons: [
+    //     {
+    //         type: String
+    //     }
+    // ],
+    // active: {
+    //     type: Boolean
+    // }
 })
 
 const Decision = mongoose.model('Decision', decisionSchema);

@@ -1,12 +1,13 @@
 const { Decision, User } = require("../models");
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const { PromiseProvider } = require("mongoose");
 
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-            const userData = await User.findOne({})
+            const userData = await User.findOne({ username: context.user.username})
                 .select('-__v -password')
                 .populate('decisions')
 
@@ -52,22 +53,58 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addDecision: async (parent, args, context) => {
+        addDecision: async (parent, { name, decisionText }, context) => {
+            //decisionData was previous args
             if(context.user) {
-                const decision = await Decision.create({ ...args, username: context.user.username });
+                const decision = await Decision.create({ name, decisionText, username: context.user.username });
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
+                    // { $push: { decisions: decision._id } },
                     { $push: { decisions: decision._id } },
                     { new: true }
                 );
-
+                // await Decision.findByIdAndUpdate(
+                //     { _id: decision._id},
+                //     // { $push: { pros: pros }},
+                //     { new: true }
+                // )
+                    console.log(name)
                 return decision;
             }
 
             throw new AuthenticationError('You need to be logged in!');
-        }
-
+        },
+        // addPro: async (parent, { proId, pro }, context) => {
+        //     if(context.user) {
+        //         await Decision.findByIdAndUpdate(
+        //             { _id: decision._id},
+        //             { $push: { pros: proId, pro }},
+        //             { new: true }
+        //         )
+        //     }
+        // },
+        // addCon: async (parent, { conData }, context) => {
+        //     if(context.user) {
+        //         await Decision.findByIdAndUpdate(
+        //             { _id: context.decision._id},
+        //             { $push: { cons: conData }},
+        //             { new: true }
+        //         )
+        //     }
+        // },
+        deleteDecision: async (parent, { _id }, context) => {
+            if (context.user) {
+              const updatedUser = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $pull: { decisions: {_id} } },
+                { new: true }
+              );
+              return updatedUser;
+            }
+            
+            throw new AuthenticationError('You need to be logged in!');
+          }
     }
 }
 

@@ -1,8 +1,7 @@
 import React from 'react';
 import Auth from "../../utils/auth";
-import { Link } from "react-router-dom";
 import { Menu } from 'semantic-ui-react';
-import { Container, Image, Dropdown } from 'semantic-ui-react';
+import { Container, Dropdown } from 'semantic-ui-react';
 
 const Nav = () => {
   if (Auth.loggedIn()) {

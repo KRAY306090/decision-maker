@@ -1,7 +1,7 @@
 import React from 'react';
 import headsCoin from '../assets/heads.png'
 import tailsCoin from '../assets/tails.png'
-import { Container, Grid, Image, Divider } from 'semantic-ui-react';
+import { Container, Grid, Image} from 'semantic-ui-react';
 const { useState } = React
 
 
