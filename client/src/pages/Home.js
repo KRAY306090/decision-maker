@@ -32,7 +32,7 @@ const Home = () => {
                 <Grid.Row>
             <Grid.Column  width={5}>
                 <Image
-                    className="boxContent"
+                    className="boxContent textBox"
                     size="massive"
                     id="coin"
                     type="image"

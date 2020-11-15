@@ -77,7 +77,7 @@ const Fortune = () => {
             <Grid columns={2} className="Box" divided stackable>
                 <Grid.Column width={5}>
                     <Image
-                        className="boxContent"
+                        className="boxContent textBox"
                         id="eightball"
                         src={fortuneImage}
                         onClick={yourFortune}

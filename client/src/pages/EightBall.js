@@ -36,25 +36,25 @@ const EightBall = () => {
     }
 
     return (
-        <Container style={{ paddingTop: '30vh', paddingBottom: '29vh'} }>
+        <Container style={{ paddingTop: '30vh', paddingBottom: '29vh' }}>
             <Grid colums={2} className="Box" divided stackable>
                 <Grid.Column width={5}>
                     <Transition animation="shake" duration="1600" visible="visible">
-                <Image
-                className="boxContent"
-                size="massive"
-                    id="eightball"
-                    src={eightball}
-                    onClick={magic}
-                />
-                </Transition>
+                        <Image
+                            className="boxContent textBox"
+                            size="massive"
+                            id="eightball"
+                            src={eightball}
+                            onClick={magic}
+                        />
+                    </Transition>
                 </Grid.Column>
                 <Grid.Column width={10}>
                     <div class="boxContent">
-                <h1>Ask the EightBall for guidance!</h1>
-                <p>Ask your question and click the Magic8ball!</p>
-                <p>Your guidance: {answer}.</p>
-                </div>
+                        <h1>Ask the EightBall for guidance!</h1>
+                        <p>Ask your question and click the Magic8ball!</p>
+                        <p>Your guidance: {answer}.</p>
+                    </div>
                 </Grid.Column>
             </Grid>
         </Container>
