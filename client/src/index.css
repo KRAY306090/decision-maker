@@ -21,7 +21,7 @@ code {
 .Box {
   background-color: #2c2c2c;
   color: white;
-  opacity: 95%;
+  
   border: white 5px groove;
 }
 
@@ -57,9 +57,7 @@ code {
   z-index: -1;
 }
 
-.credentials {
-  opacity: 85%;
-}
+
 
 
 
