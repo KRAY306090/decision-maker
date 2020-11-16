@@ -36,6 +36,6 @@ This page was built with the following technologies:
 * Version 1 is an MVP with basic functionality. 
 
 ## Screenshots
-![Overview of Decision Maker](client/public/decidr2.JPG)
-![Overview of Decision Maker](client/public/decidr.JPG)
-![Overview of Decision Maker](client/public/decidr3.JPG)
+![Overview of Decision Maker](client/public/decidr2.jpeg)
+![Overview of Decision Maker](client/public/decidr.jpeg)
+![Overview of Decision Maker](client/public/decidr3.jpeg)
